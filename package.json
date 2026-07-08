@@ -1,0 +1,30 @@
+{
+  "name": "health-mcp",
+  "version": "0.1.0",
+  "description": "Read-only MCP server for the health.ojimpo.com cultural health dashboard — scores, history, and raw activity records over stdio or HTTP",
+  "type": "module",
+  "private": false,
+  "license": "MIT",
+  "bin": {
+    "health-mcp": "./build/index.js"
+  },
+  "files": [
+    "build"
+  ],
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js','755')\"",
+    "start": "node build/index.js",
+    "watch": "tsc --watch"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "cors": "^2.8.5",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0"
+  }
+}

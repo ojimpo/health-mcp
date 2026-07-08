@@ -1,0 +1,20 @@
+services:
+  health-mcp:
+    build: .
+    ports:
+      - "4102:3000"
+    environment:
+      - TRANSPORT=http
+      - PORT=3000
+      # health-ojimpo の backend へ同一Dockerネットワーク経由で到達する。
+      - HEALTH_API_BASE_URL=${HEALTH_API_BASE_URL:-http://backend:8000}
+      # リモート公開する場合はBearerトークンを設定推奨（claude.aiカスタムコネクタは未対応なので運用は空）。
+      - MCP_AUTH_TOKEN=${MCP_AUTH_TOKEN:-}
+    restart: unless-stopped
+
+# backend本体は別リポジトリ health-ojimpo の docker compose で動いている。
+# そのネットワークに相乗りして http://backend:8000 で到達する（backendはホストでは127.0.0.1:8400のみ公開）。
+networks:
+  default:
+    name: health-ojimpo_default
+    external: true
