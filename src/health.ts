@@ -7,7 +7,7 @@ const API_BASE = process.env.HEALTH_API_BASE_URL || "http://localhost:8400";
 export const ACTIVITY_CATEGORIES = [
   "music", "exercise", "reading", "movie", "sns", "coding", "calendar",
   "live", "shopping", "vitality", "outing_activity", "cd", "podcast",
-  "game", "like", "study",
+  "game", "like", "study", "photo",
 ];
 export const STATE_CATEGORIES = ["sleep", "readiness", "stress", "weight", "outing", "ctl"];
 
